@@ -10,7 +10,7 @@ utils = discord.utils
 
 adam_count = 0
 cesar_count = 0
-
+troy_count = 0
 
 @bot.event
 async def on_message(message):
@@ -50,6 +50,7 @@ async def on_message(message):
 async def on_voice_state_update(before, after):
     global adam_count
     global cesar_count
+    global troy_count
 
     user_id = before.id
     channels = before.server.channels
@@ -70,6 +71,7 @@ async def on_voice_state_update(before, after):
             #cesar_count += 1
             #if cesar_count % 4 == 0:
             await bot.send_message(general_channel, constants.CESAR_JOINS)
-
+        elif user_id == constants.USER_TROY and members > 1:
+            #troy_count += 1
 
 bot.run(constants.TOKEN)
